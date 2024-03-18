@@ -79,7 +79,7 @@
     }
 
     function buscarProduto() {
-        var id = prompt("Digite o nome do produto")
+        var id = prompt("Digite o ID do produto")
         var produto = produtos.find(function (produto) {
             return produto.id === id;
         });
@@ -121,7 +121,7 @@
     }
 
     function excluirProduto() {
-        id = prompt("Digite o nome do produto")
+        id = prompt("Digite o ID do produto")
         var index = produtos.findIndex(function (produto) {
             return produto.id === id;
         });
