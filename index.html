@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho marçal</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <script>
+        alert("Bem vindo ao nosso sistema!")
+    </script>
+    <div class="root">
+        <div class="div-but">
+            <p>
+                Opção:
+            </p>
+            <button onclick="adicionarProduto()">
+                Adicionar Produto
+            </button>
+        </div>
+        <div class="div-but">
+            <p>
+                Opção:
+            </p>
+            <button onclick="buscarProduto()">
+                Buscar Produto
+            </button>
+        </div>
+        <div class="div-but">
+            <p>
+                Opção:
+            </p>
+            <button onclick="visualizarProdutos()">
+                Visualizar Produtos
+            </button>
+        </div>
+        <div class="div-but">
+            <p>
+                Opção:
+            </p>
+            <button onclick="atualizarProduto()">
+                Atualizar Produto
+            </button>
+        </div>
+        <div class="div-but">
+            <p>
+                Opção:
+            </p>
+            <button onclick="excluirProduto()">
+                Excluir Produto
+            </button>
+        </div>
+    </div>
+</body>
+<script>
+    var produtos = [];
+
+    function adicionarProduto() {
+        var id = prompt("Digite o ID")
+        var produtoExistente = produtos.find(function (produto) {
+            return produto.id === id;
+        });
+        if (produtoExistente) {
+            alert("Já existe produto com esse ID")
+        } else {
+            var nome = prompt("Digite o nome")
+            var preco = prompt("Digite o preço")
+            var produto = {
+                id: id,
+                nome: nome,
+                preco: preco
+            };
+            produtos.push(produto);
+            alert("Produto adicionado com sucesso!");
+        }
+    }
+
+    function buscarProduto() {
+        var id = prompt("Digite o nome do produto")
+        var produto = produtos.find(function (produto) {
+            return produto.id === id;
+        });
+        if (produto) {
+            alert(`Produto encontrado: ID: ${produto.id}, Nome: ${produto.nome}, Preço: ${produto.preco}`);
+        } else {
+            alert("Produto não encontrado.");
+        }
+    }
+
+    function visualizarProdutos() {
+        if (produtos.length > 0) {
+            produtos.forEach(function (produto) {
+                alert(`ID: ${produto.id}, Nome: ${produto.nome}, Preço: ${produto.preco}`);
+            });
+        } else {
+            alert("Nenhum produto cadastrado")
+        }
+    }
+
+    function atualizarProduto() {
+        if (produtos.length > 0) {
+            id = prompt("Digite o ID do produto")
+            var produto = produtos.find(function (produto) {
+                return produto.id === id;
+            });
+            nome = prompt("Digite o novo nome")
+            preco = prompt("DIgite o novo preço")
+            if (produto) {
+                produto.nome = nome;
+                produto.preco = preco;
+                alert("Produto atualizado com sucesso!");
+            } else {
+                alert("Produto não encontrado.");
+            }
+        } else {
+            alert("Nenhum produto cadastrado")
+        }
+    }
+
+    function excluirProduto() {
+        id = prompt("Digite o nome do produto")
+        var index = produtos.findIndex(function (produto) {
+            return produto.id === id;
+        });
+        if (index !== -1) {
+            produtos.splice(index, 1);
+            alert("Produto excluído com sucesso!");
+        } else {
+            alert("Produto não encontrado.");
+        }
+    }
+</script>
+
+</html>
